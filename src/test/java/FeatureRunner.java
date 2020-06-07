@@ -1,4 +1,7 @@
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import com.intuit.karate.junit5.Karate;
+import org.junit.jupiter.api.Test;
 
 public class FeatureRunner {
 
@@ -12,4 +15,8 @@ public class FeatureRunner {
         return new Karate().tags("@bookit").relativeTo(getClass());
     }
 
+    @Test
+    void testParallel() {
+        Results results = Runner.path("classpath:features").parallel(12);
+    }
 }
